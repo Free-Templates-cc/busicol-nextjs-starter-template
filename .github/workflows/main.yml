@@ -27,7 +27,7 @@ jobs:
     - name: Publish to surge.sh
       uses: dswistowski/surge-sh-action@v1.0.1
       with:
-        domain: nextjs-sample-template.free-templates.cc
+        domain: busicol-nextjs-starter-template.free-templates.cc
         login: ${{ secrets.SURGE_LOGIN }}
         token: ${{ secrets.SURGE_TOKEN }}
         project: out
