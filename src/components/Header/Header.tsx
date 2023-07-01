@@ -1,14 +1,26 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import TopNav from '../TopNav/TopNav'
+import useVerticalScrollEvent from '@/hooks/useVerticalScrollEvent';
 
 type Props = {}
 
 const Header = (props: Props) => {
+
+  const stickyRef = useRef<HTMLDivElement>(null);
+
+  useVerticalScrollEvent((evt:any) => {
+    if(evt.currentTarget.scrollY >= 150) {
+      (stickyRef.current as HTMLDivElement).classList.add('sticky');
+      return;
+    } 
+    (stickyRef.current as HTMLDivElement).classList.remove('sticky');
+  });
+
   return (
     <header>
         <div className="header-area ">
           <TopNav />
-          <div id="sticky-header" className="main-header-area">
+          <div id="sticky-header" className="main-header-area" ref={stickyRef}>
             <div className="container">
               <div className="header_bottom_border">
                 <div className="row align-items-center">
